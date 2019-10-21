@@ -5,6 +5,53 @@
         <link rel = "stylesheet" type = "text/css" href = "styles.css" />
         <script src = "script.js"></script>
     </head>
+    <script>
+            window.addEventListener("load", function() {
+           let form = document.querySelector("form");
+           form.addEventListener("submit", function(event) {
+               let usernameInput = document.querySelector("input[name = pilotName]")
+               let cousernameInput = document.querySelector("input[name = copilotName]")
+               let fuleInput = document.querySelector("input[name =fuelLevel]")
+               let weightInput= document.querySelector("input[name=cargoMass]")
+            //    if (usernameInput.value === ""  || fuleInput.value === "" || fuleInput.value ===""  || weightInput.value === ""){
+            //        alert("All fields are required")
+            //    }
+               if (usernameInput.value === ""){
+                   alert("Please enter Pilot name")
+               }
+               
+               if (cousernameInput.value === ""){
+                   alert("Please enter Co-Pilot name")
+               }
+
+               if (fuleInput.value === ""){
+                   alert("Please enter fule level")
+               }
+
+               if (isNaN(fuleInput.value)){
+                   alert("Please enter a number for fule level");
+                   return false;
+               }
+               else{
+                   return true;
+               }
+               if (weightInput.value ===""){
+                   alert("Please enter Cargo Mass");
+                }
+                if (isNaN(weightInput.value)){
+                   alert("Please enter a number for Cargo Mass");
+                   return false;
+                
+                }
+                else{
+                    return true
+                }
+               
+               });
+           
+       });
+       </script>
+    
     <body>
         <h1>Launch Checklist Form</h1>
         <div id="missionTarget">
