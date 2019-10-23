@@ -13,39 +13,47 @@
                let cousernameInput = document.querySelector("input[name = copilotName]")
                let fuleInput = document.querySelector("input[name =fuelLevel]")
                let weightInput= document.querySelector("input[name=cargoMass]")
-            //    if (usernameInput.value === ""  || fuleInput.value === "" || fuleInput.value ===""  || weightInput.value === ""){
-            //        alert("All fields are required")
+               if (usernameInput.value === ""  || fuleInput.value === "" || fuleInput.value ===""  || weightInput.value === ""){
+                   alert("All fields are required")
+                   event.preventDefault();
+               }
+            //    if (usernameInput.value === ""){
+            //        alert("Please enter Pilot name")
             //    }
-               if (usernameInput.value === ""){
-                   alert("Please enter Pilot name")
-               }
                
-               if (cousernameInput.value === ""){
-                   alert("Please enter Co-Pilot name")
-               }
+            //    if (cousernameInput.value === ""){
+            //        alert("Please enter Co-Pilot name")
+            //    }
 
-               if (fuleInput.value === ""){
-                   alert("Please enter fule level")
-               }
+            //    if (fuleInput.value === ""){
+            //        alert("Please enter fule level")
+            //    }
+                if(NaN(usernameInput.value) || NaN(cousernameInput.value)) {
+                    return true;
+                } else{
+                    alert("Enter valid name")
+                    return false;
+                    event.preventDefault();
+                }
 
-               if (isNaN(fuleInput.value)){
-                   alert("Please enter a number for fule level");
+               if (isNaN(fuleInput.value) || isNaN(weightInput.value)) {
+                   alert("Fuel Level and Cargo Mass must be a number.");
                    return false;
-               }
-               else{
+                   event.preventDefault();
+               } else{
                    return true;
                }
-               if (weightInput.value ===""){
-                   alert("Please enter Cargo Mass");
-                }
-                if (isNaN(weightInput.value)){
-                   alert("Please enter a number for Cargo Mass");
-                   return false;
+            //    if (weightInput.value ===""){
+            //        alert("Please enter Cargo Mass");
+            //     }
+                // if (isNaN(weightInput.value)){
+                //    alert("Please enter a number for Cargo Mass");
+                //    return false;
                 
-                }
-                else{
-                    return true
-                }
+                // }
+                // else{
+                //     return true
+                // }
                
                });
            
