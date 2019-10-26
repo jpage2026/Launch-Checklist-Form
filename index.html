@@ -9,52 +9,38 @@
             window.addEventListener("load", function() {
            let form = document.querySelector("form");
            form.addEventListener("submit", function(event) {
-               let usernameInput = document.querySelector("input[name = pilotName]")
-               let cousernameInput = document.querySelector("input[name = copilotName]")
+               let pilotnameInput = document.querySelector("input[name = pilotName]")
+               let copilotnameInput = document.querySelector("input[name = copilotName]")
                let fuleInput = document.querySelector("input[name =fuelLevel]")
                let weightInput= document.querySelector("input[name=cargoMass]")
-               if (usernameInput.value === ""  || fuleInput.value === "" || fuleInput.value ===""  || weightInput.value === ""){
-                   alert("All fields are required")
+
+               if ((pilotnameInput.value === "") || (!isNaN(pilotnameInput.value))) {
+                   alert("Enter valid Pilot name") 
                    event.preventDefault();
                }
-            //    if (usernameInput.value === ""){
-            //        alert("Please enter Pilot name")
-            //    }
-               
-            //    if (cousernameInput.value === ""){
-            //        alert("Please enter Co-Pilot name")
-            //    }
-
-            //    if (fuleInput.value === ""){
-            //        alert("Please enter fule level")
-            //    }
-                if(NaN(usernameInput.value) || NaN(cousernameInput.value)) {
-                    return true;
-                } else{
-                    alert("Enter valid name")
-                    return false;
+               if((copilotnameInput.value === "") || (!isNaN(copilotnameInput.value))) {
+                   alert ("Enter a valid Co-Pilot name")
+                   event.preventDefault();
+               }
+               if ((fuleInput.value === "") || (isNaN(fuleInput.value))){
+                   alert("Enter number for Fuel Level")
+                   event.preventDefault();
+               }
+               if ((weightInput.value === "") || (isNaN(weightInput.value))){
+                   alert( "Enter number for Cargo Mass")
+                   event.preventDefault();
+                }
+                if(fuleInput.value <10000){
+                    // alert("not enought fule")
+                    document.getElementById("fuelStatus").innerHTML= "Fule Level to low for launch"
                     event.preventDefault();
                 }
-
-               if (isNaN(fuleInput.value) || isNaN(weightInput.value)) {
-                   alert("Fuel Level and Cargo Mass must be a number.");
-                   return false;
-                   event.preventDefault();
-               } else{
-                   return true;
-               }
-            //    if (weightInput.value ===""){
-            //        alert("Please enter Cargo Mass");
-            //     }
-                // if (isNaN(weightInput.value)){
-                //    alert("Please enter a number for Cargo Mass");
-                //    return false;
-                
-                // }
-                // else{
-                //     return true
-                // }
-               
+                if (weightInput.value > 10000){
+                    // alert("to much cargo for launch")
+                    document.getElementById("cargoStatus").innerHTML = "Cargo mass to high for launch"
+                    event.preventDefault();
+                }
+            
                });
            
        });
@@ -86,8 +72,8 @@
             <h2 id="launchStatus">Awaiting Information Before Launch</h2>
             <div  id="faultyItems">
                 <ol>
-                    <li id="pilotStatus">Pilot Ready</li>
-                    <li id="copilotStatus">Co-pilot Ready</li>
+                    <li id="pilotStatus">Pilot ${pilotnameInput.value} Ready</li>
+                    <li id="copilotStatus">Co-pilot ${copilotnameInput.vlaue} Ready</li>
                     <li id="fuelStatus">Fuel level high enough for launch</li>
                     <li id="cargoStatus">Cargo mass low enough for launch</li>
                 </ol>
