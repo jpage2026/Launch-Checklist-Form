@@ -31,15 +31,23 @@
                    event.preventDefault();
                 }
                 if(fuleInput.value <10000){
-                    // alert("not enought fule")
                     document.getElementById("fuelStatus").innerHTML= "Fule Level to low for launch"
+                    document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch"
+                    document.getElementById("launchStatus").style.color = "Red";
                     event.preventDefault();
                 }
                 if (weightInput.value > 10000){
-                    // alert("to much cargo for launch")
                     document.getElementById("cargoStatus").innerHTML = "Cargo mass to high for launch"
+                    document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch"
+                    document.getElementById("launchStatus").style.color = "Red";
                     event.preventDefault();
                 }
+                if ((fuleInput.value >= 9999) && (weightInput.value < 10000)) {
+                    // alert ("good to go")
+                    document.getElementById("launchStatus").innerHTML = "Shuttle Ready for Launch"
+                    document.getElementById("launchStatus").style.color = "Green";
+                }
+                    document.getElementById("faultyItems").style.visibility = "visible"
             
                });
            
@@ -49,7 +57,14 @@
     <body>
         <h1>Launch Checklist Form</h1>
         <div id="missionTarget">
-            <!-- Fetch some planetary data -->
+            <ol>
+                <li>Name: ${json.name}</li>
+                <li>Diameter: ${json.diameter}</li>
+                <li>Star: ${json.star}</li>
+                <li>Distance from Earth: ${json.distance}</li>
+                <li>Number of Moons: ${json.moons}</li>
+             </ol>
+             <img src="${json.image}">
         </div> 
         <div id="launchForm">
             <form>
@@ -71,9 +86,9 @@
         <div id="launchStatusCheck">
             <h2 id="launchStatus">Awaiting Information Before Launch</h2>
             <div  id="faultyItems">
-                <ol>
-                    <li id="pilotStatus">Pilot ${pilotnameInput.value} Ready</li>
-                    <li id="copilotStatus">Co-pilot ${copilotnameInput.vlaue} Ready</li>
+                 <ol>
+                     <li id="pilotStatus">(`Pilot: ${pilotnameInput}`is Ready)</li>
+                     <li id="copilotStatus">Co-pilot ${copilotnameInput} Ready</li>
                     <li id="fuelStatus">Fuel level high enough for launch</li>
                     <li id="cargoStatus">Cargo mass low enough for launch</li>
                 </ol>
