@@ -7,7 +7,7 @@ div {
 }
 
 #faultyItems {
-    visibility: hidden;   
+    visibility: visible;   
 }
 
 #launchForm {
@@ -50,4 +50,7 @@ button {
     width: 25%;
     height: 30px;
     margin: 10px 0;
+}
+#faultyItems onclick{
+    visibility: visbible
 }

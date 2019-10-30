@@ -5,66 +5,17 @@
         <link rel = "stylesheet" type = "text/css" href = "styles.css" />
         <script src = "script.js"></script>
     </head>
-    <script>
-            window.addEventListener("load", function() {
-           let form = document.querySelector("form");
-           form.addEventListener("submit", function(event) {
-               let pilotnameInput = document.querySelector("input[name = pilotName]")
-               let copilotnameInput = document.querySelector("input[name = copilotName]")
-               let fuleInput = document.querySelector("input[name =fuelLevel]")
-               let weightInput= document.querySelector("input[name=cargoMass]")
-
-               if ((pilotnameInput.value === "") || (!isNaN(pilotnameInput.value))) {
-                   alert("Enter valid Pilot name") 
-                   event.preventDefault();
-               }
-               if((copilotnameInput.value === "") || (!isNaN(copilotnameInput.value))) {
-                   alert ("Enter a valid Co-Pilot name")
-                   event.preventDefault();
-               }
-               if ((fuleInput.value === "") || (isNaN(fuleInput.value))){
-                   alert("Enter number for Fuel Level")
-                   event.preventDefault();
-               }
-               if ((weightInput.value === "") || (isNaN(weightInput.value))){
-                   alert( "Enter number for Cargo Mass")
-                   event.preventDefault();
-                }
-                if(fuleInput.value <10000){
-                    document.getElementById("fuelStatus").innerHTML= "Fule Level to low for launch"
-                    document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch"
-                    document.getElementById("launchStatus").style.color = "Red";
-                    event.preventDefault();
-                }
-                if (weightInput.value > 10000){
-                    document.getElementById("cargoStatus").innerHTML = "Cargo mass to high for launch"
-                    document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch"
-                    document.getElementById("launchStatus").style.color = "Red";
-                    event.preventDefault();
-                }
-                if ((fuleInput.value >= 9999) && (weightInput.value < 10000)) {
-                    // alert ("good to go")
-                    document.getElementById("launchStatus").innerHTML = "Shuttle Ready for Launch"
-                    document.getElementById("launchStatus").style.color = "Green";
-                }
-                    document.getElementById("faultyItems").style.visibility = "visible"
-            
-               });
-           
-       });
-       </script>
-    
     <body>
         <h1>Launch Checklist Form</h1>
         <div id="missionTarget">
             <ol>
-                <li>Name: ${json.name}</li>
-                <li>Diameter: ${json.diameter}</li>
-                <li>Star: ${json.star}</li>
-                <li>Distance from Earth: ${json.distance}</li>
-                <li>Number of Moons: ${json.moons}</li>
+                <li>Name: ${data.name}</li>
+                <li>Diameter: ${data.diameter}</li>
+                <li>Star: ${data.star}</li>
+                <li>Distance from Earth: ${data.distance}</li>
+                <li>Number of Moons: ${data.moons}</li>
              </ol>
-             <img src="${json.image}">
+             <img src="${data.image}">
         </div> 
         <div id="launchForm">
             <form>
